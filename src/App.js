@@ -18,7 +18,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <h1>Zach's Branch</h1>
     </div>
   );
 }
