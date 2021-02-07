@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import NASA from './components/NASA';
 
 function App() {
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  //const date = new Date(Date.now()).toLocaleDateString();
+
+  //4 urls - Nasa, Zomato, Weather, Jobs
+  const nasaurl = `https://api.nasa.gov/planetary/earth/imagery?${longitude}&${latitude}&date=2021-07-02&api_key=R4umF8g5DMrB6R2FNqPDMEMBPyUN9H9ni2VMZeZA`;
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(setLatAndLong);
+  }, [])
+
+  function setLatAndLong(){
+    setLatitude(coords.latitude);
+    setLongitude(coords.longitude);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <h1>Alec's Branch</h1>
+    <div>
+      <NASA url={nasaurl} />
     </div>
   );
 }
