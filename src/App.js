@@ -19,6 +19,7 @@ function App() {
         </a>
       </header>
       <h1>Austin' Branch</h1>
+      <h2>What the hell is going on</h2>
     </div>
   );
 }
