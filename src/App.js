@@ -1,26 +1,32 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import GitJobsApp from './components/GitJobsApp'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <h2>ugh</h2>
+    <div>
+      <GitJobsApp />
     </div>
   );
 }
 
 export default App;
+
+
+// function App() {
+//   const [latitude, setLatitude] = useState('');
+//   const [longitude, setLongitude] = useState('');
+//   const [position, setPosition] = useState('');
+//   //const date = newDate(Date.now()).toLocaleDateString();
+
+//   const gitjobsurl = `https://jobs.github.com/positions.json?${latitude}&${longitude}`
+
+//   useEffect(() => {
+//     navigator.geolocation.getCurrentPosition(setLatAndLong(position));
+//   }, [])
+
+//   function setLatAndLong(position) {
+//     // setLatitude(position.coords.latitude);
+//     // setLongitude(position.coords.longitude);
+//     // console.log(latitude, longitude);
+//   }
