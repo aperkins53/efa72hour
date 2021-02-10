@@ -1,8 +1,29 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { useEffect, useState } from 'react';
+import './App.css';
+import NASA from './components/NASA';
+
 
 function App() {
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
+  
+
+
+  useEffect(() => {
+    if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(successCallback);
+    }
+  }, [])
+  
+  function successCallback(position){
+    setLatitude(position.coords.latitude);
+    setLongitude(position.coords.longitude);
+  }
+  
   return (
+
+    <div>
+      <NASA latitude={latitude} longitude={longitude} />
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -18,10 +39,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <h2>ugh</h2>
-      <h1>Austin' Branch</h1>
-      <h2>What the hell is going on</h2>
-      <h1>Hello</h1>
     </div>
   );
 }
