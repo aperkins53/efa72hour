@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import './App.css';
 import GitJobsApp from './components/GitJobsApp'
@@ -23,6 +22,15 @@ const App = () => {
       <GitJobsApp latitude={latitude} longitude={longitude}/>
       <GetWeather latitude={latitude} longitude={longitude}/>
       <NASA latitude={latitude} longitude={longitude} />
+
+     <h1
+        style={{
+          marginLeft: "4em",
+        }}
+      >
+        Soups on!
+      </h1>
+      <Zomato latitude={latitude} longitude={longitude} />
     </div>
   );
 }
