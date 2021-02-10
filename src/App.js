@@ -1,32 +1,30 @@
 
-import './App.css';
 import { useEffect, useState } from 'react';
-import GetWeather from './components/OpenWeather';
+import './App.css';
+import GitJobsApp from './components/GitJobsApp'
 
-function App() {
-    const [latitude, setLatitude] = useState();
-    const [longitude, setLongitude] = useState();
+const App = () => {
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
 
-    useEffect(() => {
-      if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(successCallback);
-      }
-    }, [])
-
-    function successCallback(position){
-      setLatitude(position.coords.latitude)
-      setLongitude(position.coords.longitude)
+  useEffect(() => {
+    if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(successCallback);
     }
-
-    return (
-      <div>
-        <GetWeather latitude={latitude} longitude={longitude}/>
-        <NASA latitude={latitude} longitude={longitude} />
-      </div>
-    );
+    }, []);
+  function successCallback(position){
+    setLatitude(position.coords.latitude)
+    setLongitude(position.coords.longitude)
   }
 
-  export default App;
+  return (
 
+    <div>
+      <GitJobsApp latitude={latitude} longitude={longitude}/>
+      <GetWeather latitude={latitude} longitude={longitude}/>
+      <NASA latitude={latitude} longitude={longitude} />
+    </div>
+  );
+}
 
-
+export default App;
