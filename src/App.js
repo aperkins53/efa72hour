@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import GetWeather from './components/OpenWeather';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const [latitude, setLatitude] = useState();
+    const [longitude, setLongitude] = useState();
 
-export default App;
+    useEffect(() => {
+      if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(successCallback);
+      }
+    }, [])
+
+    function successCallback(position){
+      setLatitude(position.coords.latitude)
+      setLongitude(position.coords.longitude)
+    }
+
+    return (
+      <div>
+        <GetWeather latitude={latitude} longitude={longitude}/>
+   
+      </div>
+    );
+  }
+
+  export default App;
+  
+
+
+
+
