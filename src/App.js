@@ -1,3 +1,4 @@
+
 import './App.css';
 import { useEffect, useState } from 'react';
 import GetWeather from './components/OpenWeather';
@@ -20,14 +21,12 @@ function App() {
     return (
       <div>
         <GetWeather latitude={latitude} longitude={longitude}/>
-   
+        <NASA latitude={latitude} longitude={longitude} />
       </div>
     );
   }
 
   export default App;
-  
-
 
 
 
