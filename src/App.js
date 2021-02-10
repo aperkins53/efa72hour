@@ -1,25 +1,37 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Zomato from "./components/Zomato";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
+
+  //urls
+  // const zomato = `https://developers.zomato.com/api/v2.1/geocode?lat=${latitude}&lon=${longitude}`;
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successCallback);
+    }
+  });
+
+  function successCallback(position) {
+    setLatitude(position.coords.latitude);
+    console.log(latitude);
+    setLongitude(position.coords.longitude);
+    console.log(longitude);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <h1>Austin' Branch</h1>
-      <h2>What the hell is going on</h2>
+    <div>
+      <h1
+        style={{
+          marginLeft: "4em",
+        }}
+      >
+        Soups on!
+      </h1>
+      <Zomato latitude={latitude} longitude={longitude} />
     </div>
   );
 }
