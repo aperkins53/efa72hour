@@ -6,6 +6,8 @@ import {
   CardSubtitle,
   CardBody,
   CardImg,
+  Container,
+  CardColumns
 } from "reactstrap";
 
 const key = "deff7a1635040141caacd2232812ea3a";
@@ -30,41 +32,27 @@ function Zomato(props) {
           data.nearby_restaurants.map((restaurants, index) => {
             console.log(restaurants);
 
-            const ifImage = () => {
-              if (ifImage.restaurants.restaurant.featured_image == "") {
-                restaurants.restaurant.featured_image.innerText =
-                  "restaurants: null";
-              } else {
-                restaurants.restaurant.featured_image.innerText =
-                  "restaurants" + restaurants.restaurant.featured_image;
-              }
-            };
-
-            // const ifImage = () => {
-            //   if (restaurants.restaurant) {
-            //     restaurants.restaurant.featured_image;
-            //   } else {
-            //     return;
-            //   }
-            // };
             return (
+              <div>
               <Card
                 className="card"
                 key={index}
                 style={{
                   backgroundColor: "lightslategrey",
                   margin: "2em",
-                  width: "25%",
+                  width: "1000",
+                  height: '250',
+                  overflow: 'hidden',
                   borderRadius: ".5",
-                  color: "white",
+                  color: "white"
                 }}
               >
-                {/* <CardImg
+                {<CardImg
                   top
                   width="100%"
                   src={restaurants.restaurant.photos_url}
                   alt="Card image cap"
-                /> */}
+                />}
                 <CardBody>
                   <CardTitle tag="h5">{restaurants.restaurant.name}</CardTitle>
                   <CardSubtitle tag="h6" className="mb-2 ">
@@ -73,14 +61,24 @@ function Zomato(props) {
                   <CardText>{restaurants.restaurant.cuisines}</CardText>
                 </CardBody>
               </Card>
+              </div>
             );
           })
         )
       );
   };
   useEffect(() => {
+    if (!props.latitude || !props.longitude) {
+      return;
+    }
     fetchZomato();
-  }, []);
-  return <div>{zomData}</div>;
+  }, [props.longitude, props.latitude]);
+  return (
+    <div>
+      <Container>
+        <CardColumns>{zomData}</CardColumns>
+      </Container>
+    </div>
+  );
 }
 export default Zomato;

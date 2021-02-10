@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import GitJobsApp from './components/GitJobsApp'
+import NASA from './components/NASA';
+import Zomato from './components/Zomato';
+import GetWeather from './components/OpenWeather';
+import { Container } from 'reactstrap';
 
 const App = () => {
   const [latitude, setLatitude] = useState();
@@ -17,21 +21,23 @@ const App = () => {
   }
 
   return (
-
-    <div>
-      <GitJobsApp latitude={latitude} longitude={longitude}/>
-      <GetWeather latitude={latitude} longitude={longitude}/>
-      <NASA latitude={latitude} longitude={longitude} />
-
-     <h1
-        style={{
-          marginLeft: "4em",
-        }}
-      >
-        Soups on!
-      </h1>
-      <Zomato latitude={latitude} longitude={longitude} />
-    </div>
+    <Container style={{display: 'flex', justifyContent: 'center'}}>
+      <div>
+        <NASA latitude={latitude} longitude={longitude} />
+        <hr/>
+        <hr/>
+        <GetWeather latitude={latitude} longitude={longitude} />
+        <hr/>
+        <hr/>
+        <GitJobsApp latitude={latitude} longitude={longitude} />
+        <hr/>
+        <hr/>
+        <h1 style={{ marginLeft: '4em' }}>Soups on!</h1>
+        <hr/>
+        <hr/>
+        <Zomato latitude={latitude} longitude={longitude} />
+      </div>
+    </Container>
   );
 }
 

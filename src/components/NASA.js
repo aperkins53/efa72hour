@@ -21,7 +21,7 @@ const NASA = (props) => {
         }
     }, [props.longitude, props.latitude]);
 
-    let styles = {img: {maxHeight: '400px', maxWidth: '350px', border: '2px solid black', borderRadius: '20%', position: 'absolute', marginLeft: '40%'}}
+    let styles = {img: {maxHeight: '400px', maxWidth: '350px', border: '2px solid black', borderRadius: '20%'}}
 
     return(
     <div>
